@@ -1,0 +1,14 @@
+CC = gcc
+CFLAGS = -O3 -Wall
+OMPFLAGS = -fopenmp
+
+all: matrix_mult_seq matrix_mult_omp
+
+matrix_mult_seq: matrix_mult_seq.c
+	$(CC) $(CFLAGS) -o matrix_mult_seq matrix_mult_seq.c -lm
+
+matrix_mult_omp: matrix_mult_omp.c
+	$(CC) $(CFLAGS) $(OMPFLAGS) -o matrix_mult_omp matrix_mult_omp.c -lm
+
+clean:
+	rm -f matrix_mult_seq matrix_mult_omp
